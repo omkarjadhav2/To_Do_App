@@ -2,10 +2,13 @@ from flask import Flask
 from models import db
 from routes.main import main_bp
 import os
+from dotenv import load_dotenv
+
 
 app = Flask(__name__)
+load_dotenv()
 app.secret_key = os.environ.get("SECRET_KEY", "fallback-secret")
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("SQL_URI", "fallback-SQL_URI")
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("SQL_URI", "sqlite:///todo.db")
 
 db.init_app(app)
 
