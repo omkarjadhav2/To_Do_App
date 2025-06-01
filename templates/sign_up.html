@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block body %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+        <style>
+        .error{
+            color: red;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="login_div">
+      <h1>Create an account</h1>
+
+      <form action="/register" method="post">
+        <div class="mb-3 mx-2 my-2">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            name="username"
+            class="form-control"
+            id="exampleFormControlInput1"
+          />
+        </div>
+        <label for="password" class="form-label mx-2">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="inputPassword5"
+          class="form-control mx-2 mb-3"
+          aria-describedby="passwordHelpBlock"
+        />
+        <button type="submit" class="btn btn-dark mx-4">Sign Up</button>
+      </form>
+      <p class="mx-3 mt-3">Already have an account?</p>
+      <a  href="/login" ><p class="mx-3 mt-3 text-dark">Login here</p></a>
+      {% if error %}
+      <p class="error">{{ error }}</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
+{% endblock body %}
